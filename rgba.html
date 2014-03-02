@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>背景透明兼容</title>
+    <meta name="author" content="littledu" />
+    <style>
+body,h1,h2,h3,dl,dt,dd,ul,ol,li,th,td,p,pre,form,fieldset,legend,input,button,textarea{margin:0;padding:0;}
+body,button,input,select,textarea{font: 14px/1.5 \5b8b\4f53,tahoma, arial, sans-serif;}
+h1,h2,h3{font-size:100%;}
+li{list-style:none;}
+fieldset,img{border:0;}
+table{border-collapse:collapse;border-spacing:0;}
+button,input,select,textarea{font-size:100%;}
+legend{color:#000;}
+.clearfix:after{ content:"."; display:block; height:0; visibility:hidden; clear:both;}
+.clearfix{ *zoom:1;}
+
+body{background-color: #f3f3f3;}
+.wrap{width: 540px; margin: 20px auto; border: 1px solid #ccc; border-radius: 4px; padding: 10px; font-family: 'Microsoft YaHei'; }
+.title{text-align: center; font-size: 18px; padding-bottom: 20px;}
+.para-list{margin-bottom: 20px; border-bottom: 1px solid #ccc; padding-bottom: 10px;}
+.para-list li{overflow: hidden; margin-bottom: 10px;}
+.para-list label{float: left; width: 126px; text-align: right; font-weight: bold;}
+.para-list .darea{float: left; position: relative;}
+#opacity{width: 34px; height: 18px; line-height: 18px; padding: 4px 4px 2px 4px;}
+.opacity-area{margin-left: 12px;}
+#color{width: 62px; height: 18px; line-height: 18px; padding: 4px 4px 2px 4px;}
+
+.code-area{border-bottom: 1px solid #ccc; padding-bottom: 10px; margin-bottom: 20px;}
+.code-area textarea{width: 515px; height: 87px; padding: 10px; border: 1px solid #ccc; resize: none;}
+.tip{color: #c00; font-size: 18px; font-weight: bold;}
+
+#btn{display: inline-block;color: #4c4c4c;border-width: 1px;border-style: solid;border-color:#c9c9c9 #b6b6b6 #afafaf #b6b6b6;padding:6px 10px 6px 10px;line-height: 12px; cursor: pointer; background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 1%,#eaeaea 100%); /* Chrome10+,Safari5.1+ */ text-decoration: none; margin-bottom: 10px; border-radius: 2px;}
+#btn:hover{background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 1%,#ffffff 100%); /* Chrome10+,Safari5.1+ */ }
+#ooxx{width: 100px; height: 100px; color: #fff; line-height: 100px; text-align: center; font-weight: bold;}
+</style>
+</head>
+<body>
+    <div class="wrap">
+        <h2 class="title">背景透明兼容</h2>
+        <div class="main">
+            <ul class="para-list clearfix">
+                <li>
+                    <label for="color">需要透明的颜色值：</label>
+                    <div class="darea color-area">
+                        # <input type="text" id="color" value="000">
+                    </div>
+                </li>
+                <li>
+                    <label>透明度(小数)：</label>
+                    <div class="darea opacity-area">
+                        <input type="text" id="opacity" value="0.3">
+                    </div>
+                </li>
+            </ul>
+            <div class="code-area">
+                <a href="javascript:;" id="btn">点击全选代码，Control+C吧</a>
+                <textarea class="code-area" id="code"></textarea>
+            </div>
+            <div class="show">
+                <strong>效果预览：</strong><br /><br />
+                <div id="ooxx">测试文本</div>
+                <p class="tip" id="tip"></p>
+            </div>
+        </div>
+    </div>
+<script src="rgba.js"></script>
+</body>
+</html>

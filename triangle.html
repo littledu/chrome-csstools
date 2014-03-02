@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小三角生成工具</title>
+    <meta name="author" content="littledu" />
+    <style>
+body,h1,h2,h3,dl,dt,dd,ul,ol,li,th,td,p,pre,form,fieldset,legend,input,button,textarea{margin:0;padding:0;}
+body,button,input,select,textarea{font: 14px/1.5 \5b8b\4f53,tahoma, arial, sans-serif;}
+h1,h2,h3{font-size:100%;}
+li{list-style:none;}
+fieldset,img{border:0;}
+table{border-collapse:collapse;border-spacing:0;}
+button,input,select,textarea{font-size:100%;}
+legend{color:#000;}
+.clearfix:after{ content:"."; display:block; height:0; visibility:hidden; clear:both;}
+.clearfix{ *zoom:1;}
+
+body{background-color: #f3f3f3;}
+.wraper{width: 880px; margin: 20px auto; padding: 10px; font-family: 'Microsoft YaHei'; overflow: hidden;}
+.left{width: 540px; float: left; margin-right: 10px;}
+.title{text-align: center; font-size: 18px; padding-bottom: 20px;}
+.para-list li{overflow: hidden; margin-bottom: 20px; margin-right: 45px; float: left;}
+.para-list label{float: left;}
+.para-list .darea{float: left; position: relative;}
+#size{width: 24px; height: 18px; line-height: 18px; padding: 4px 4px 2px 4px; margin-left: 12px;}
+.direction-area{margin-left: 12px;}
+.direction-area select{width: 80px;}
+#fgColor, #bgColor{width: 62px; height: 18px; line-height: 18px; padding: 4px 4px 2px 4px;}
+
+.code-area{margin-bottom: 20px;}
+.code-area textarea{width: 515px; height: 197px; resize: none; padding: 10px;}
+.code-areah textarea{height: 22px;}
+.tip{color: #c00; font-size: 18px; font-weight: bold;}
+
+.btn{display: inline-block;color: #4c4c4c;border-width: 1px;border-style: solid;border-color:#c9c9c9 #b6b6b6 #afafaf #b6b6b6;padding:6px 10px 6px 10px;line-height: 12px; cursor: pointer; background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 1%,#eaeaea 100%); /* Chrome10+,Safari5.1+ */ text-decoration: none; margin-bottom: 10px; border-radius: 2px;}
+.btn:hover{background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 1%,#ffffff 100%); /* Chrome10+,Safari5.1+ */ }
+.show{position: relative; width: 330px; float: left; margin-top: 50px;}
+.show-area{position: relative; margin-left: 40px;}
+.intro, .set-para{border: 1px solid #ccc; padding: 10px; border-radius: 4px; margin-bottom: 20px;}
+.intro legend, .set-para legend{font-weight: bold;}
+.intro .tri{width:0; height:0; font-size:0; display:inline-block; border-color:#000 transparent transparent transparent; border-style:solid dashed dashed dashed; border-width:5px; vertical-align:top; margin-top: 8px;}
+.intro .intro-tip{border: 1px solid #ccc; border-radius: 4px; position: relative; margin-top: 15px; padding: 10px; color: #a00;}
+.intro .bor-c{width:0; height:0; font-size:0; display:inline-block; position:absolute;border-color:transparent transparent #ccc transparent; border-style: dashed dashed solid dashed; left: 35px; top: -20px;border-width:10px;}
+.intro .bor-i{width:0; height:0; font-size:0; display:inline-block; position:absolute;border-color:transparent transparent #f3f3f3 transparent; border-style: dashed dashed solid dashed; left: -10px; top: -9px;border-width:10px;}
+</style>
+</head>
+<body>
+    <div class="wraper">
+        <div class="left">
+            <h2 class="title">小三角生成工具</h2>
+            <p class="tip" id="tip"></p>
+            
+            <div class="main">
+                <fieldset class="set-para">
+                    <legend>参数设置</legend>
+                    <ul class="para-list clearfix">
+                        <li>
+                            <label for="size">大小：</label>
+                            <div class="darea size-area">
+                                <input type="text" id="size" value="10"> px
+                            </div>
+                        </li>
+                        <li>
+                            <label for="color">颜色：</label>
+                            <div class="darea color-area">
+                                # <input type="text" id="fgColor" value="000">
+                            </div>
+                        </li>
+                        <li>
+                            <label>方向：</label>
+                            <div class="darea direction-area">
+                                <select id="direction">
+                                    <option value="up">向上</option>
+                                    <option value="down">向下</option>
+                                    <option value="left">向左</option>
+                                    <option value="right">向右</option>
+                                </select>
+                            </div>
+                        </li>
+                        <li>
+                            <label for="color">边框颜色：</label>
+                            <div class="darea color-area">
+                                # <input type="text" id="bgColor" value="">
+                            </div>
+                        </li>
+                    </ul>
+                </fieldset>
+                <div class="code-area code-areah">
+                    <a href="javascript:;" class="btn">点击全选HTML代码，Control+C吧</a><textarea id="codeAreaH"></textarea>
+                </div>
+                <div class="code-area">
+                    <a href="javascript:;" class="btn">点击全选CSS代码，Control+C吧</a><textarea id="codeAreaC"></textarea>
+                </div>
+            </div>
+
+            <fieldset class="intro">
+                <legend>工具说明</legend>
+                <p>此小工具可生成两种小三角</p>
+                <div>1. 为常见的普通小三角，如：展开详情 <i class="tri"></i></div>
+                <div>
+                    2. 为类小气泡形式，如下：
+                    <div class="intro-tip">
+                        注：参数中的“边框颜色”有填则为第2种形式，没有则为第1种，因为大部分这种效果都会用定位，所以代码里默认生成为定位代码，可根据自己的具体情况进行增减修改，理论上需要修改的代码是class名和left/top的值。
+                        <i class="bor-c">
+                            <span class="bor-i"></span>
+                        </i>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="show">
+            <strong>预览：</strong>
+            <div class="show-area">
+                <i id="showTri"></i>
+                <i id="borC">
+                    <span id="borI"></span>
+                </i>
+            </div>
+        </div>
+    </div>
+<script src="triangle.js"></script>
+</body>
+</html>
